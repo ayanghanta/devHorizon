@@ -1,0 +1,33 @@
+.myDetailsContainer {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem;
+  margin-bottom: 9.6rem;
+}
+.myDetailsContainer h1 {
+  text-align: center;
+  margin-top: 5.2rem;
+  font-size: 3.2rem;
+}
+.myDetailsContainer .images {
+  margin: 6.4rem 0;
+  display: flex;
+  justify-content: center;
+}
+.myDetailsContainer img {
+  width: 6rem;
+  border-radius: 50%;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  /* opacity: 90%; */
+}
+.myDetailsContainer .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.myDetailsContainer .content p {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: #454545;
+}
