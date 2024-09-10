@@ -12,12 +12,6 @@ This project will grow as I continue to learn more about web development, and ne
 
 - React
 
-## Setup
+**Feel free to contribute and suggest improvements!**
 
-To run the project locally, follow these steps:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/ayanghanta/devHorizen.git
-   ```
+Made with ❤️ by Ayan
