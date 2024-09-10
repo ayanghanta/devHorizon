@@ -1,8 +1,23 @@
-# React + Vite
+# devHorizen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **devHorizen**, a personal blog where I explore web development, share insights, and document my journey as a developer.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**devHorizen** is a minimalist blog built with React, designed to be simple, clean, and focused on content. The theme is black and white, with vibrant, colorful images in each blog post to create contrast and emphasize visual storytelling.
+
+This project will grow as I continue to learn more about web development, and new features will be added over time.
+
+## Tech Stack
+
+- React
+
+## Setup
+
+To run the project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ayanghanta/devHorizen.git
+   ```
