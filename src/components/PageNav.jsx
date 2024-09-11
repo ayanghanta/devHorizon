@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./PageNav.module.css";
 import Logo from "./Logo";
 import Button from "./Button";
@@ -15,7 +15,9 @@ function PageNav() {
           <NavLink to="/blogs">Blogs</NavLink>
         </li>
       </ul>
-      <Button type="create">&#43; Create</Button>
+      <Link to="/login">
+        <Button type="create">&#43; Create</Button>
+      </Link>
     </nav>
   );
 }

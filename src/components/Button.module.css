@@ -3,8 +3,10 @@
   font-family: inherit;
   padding: 0.8rem 1.6rem;
   border-radius: 1rem;
+  text-decoration: none;
 }
-.create {
+.create,
+.login {
   font-family: "Barlow", sans-serif;
   font-size: 1.8rem;
   background-color: #454545;
@@ -12,7 +14,11 @@
   font-weight: 500;
   cursor: pointer;
 }
-.create:hover {
+.create:hover,
+.login:hover {
   transition: all 0.3s;
   background-color: #6a6a6a;
+}
+.login {
+  text-transform: uppercase;
 }
