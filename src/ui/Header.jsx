@@ -1,11 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
-import styles from "./PageNav.module.css";
 import Logo from "./Logo";
-import Button from "./Button";
+import Button from "./buttons/Button";
 
 function PageNav() {
   return (
-    <nav className={styles.nav}>
+    <nav>
       <Logo />
       <ul>
         <li>
@@ -15,7 +14,7 @@ function PageNav() {
           <NavLink to="/blogs">Blogs</NavLink>
         </li>
       </ul>
-      <Link to="/login">
+      <Link to="/write">
         <Button type="create">&#43; Create</Button>
       </Link>
     </nav>

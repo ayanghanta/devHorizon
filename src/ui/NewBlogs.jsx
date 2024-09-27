@@ -1,15 +1,14 @@
-import styles from "./NewBlogs.module.css";
-import SquarBlogCard from "./SquarBlogCard";
-import WideBlogCard from "./WideBlogCard";
+import SquarBlogCard from "../features/blog/SquarBlogCard";
+import WideBlogCard from "../features/blog/WideBlogCard";
 
 function NewBlogs() {
   return (
-    <div className={styles.newBlog}>
-      <div className={styles.latestBlog}>
+    <div>
+      <div>
         <p className="headingSmall">Newest on the Blog</p>
         <WideBlogCard />
       </div>
-      <div className={styles.topBlogs}>
+      <div>
         <p className="headingSmall">Most Read Blogs</p>
         <div className="squarBlogCardContainer">
           <SquarBlogCard />

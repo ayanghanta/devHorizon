@@ -1,22 +1,21 @@
-import styles from "./MyInfo.module.css";
-function MyInfo() {
+function AboutMePage() {
   return (
-    <div className={styles.myDetailsContainer}>
+    <div>
       <h1>Hey,I&apos;m Ayan Ghanta.</h1>
-      <div className={styles.images}>
+      <div>
         <img src="myPhoto.jpg" alt="photo of ayan ghanta" />
       </div>
-      <div className={styles.content}>
+      <div>
         <p>
           A developer passionate about turning ideas into reality through code.
         </p>
         <p>
           I started my journey in Physics, earning my degree in 2024. But it
           wasn&apos;t long before I realized my true passion wasn&apos;t in the
-          world of formulas and equations. In 2022, I was introduced to coding,
-          and everything changed. I discovered the thrill of writing code and
-          watching the world transform, bit by bit, on the screen in front of
-          me.
+          world of formulas and equations. In 2022, I was introduced to
+          programming, and everything changed. I discovered the thrill of
+          writing code and watching the world transform, bit by bit, on the
+          screen in front of me.
         </p>
         <p>
           Since August of that year, I&apos;ve immersed myself in web
@@ -39,6 +38,5 @@ function MyInfo() {
     </div>
   );
 }
-// inspire form https://alexkondov.com/
 
-export default MyInfo;
+export default AboutMePage;
