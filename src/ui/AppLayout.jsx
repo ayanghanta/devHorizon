@@ -3,7 +3,7 @@ import Footer from './Footer';
 import Header from './Header';
 function AppLayout() {
   return (
-    <div className="grid-rows-[1fr auto 1fr] grid min-h-dvh">
+    <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
       <Header />
 
       <main className="px-3">

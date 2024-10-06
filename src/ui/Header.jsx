@@ -4,7 +4,7 @@ import Button from './buttons/Button';
 
 function PageNav() {
   return (
-    <nav className="font-header flex items-center justify-between p-3">
+    <nav className="flex items-center justify-between p-3 font-header">
       <Logo />
       <ul className="flex gap-4 text-base font-medium sm:gap-8 sm:text-xl">
         <li>
