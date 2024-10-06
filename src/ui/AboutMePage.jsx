@@ -1,11 +1,17 @@
 function AboutMePage() {
   return (
-    <div>
-      <h1>Hey,I&apos;m Ayan Ghanta.</h1>
-      <div>
-        <img src="myPhoto.jpg" alt="photo of ayan ghanta" />
+    <div className="mx-auto max-w-4xl">
+      <h1 className="font-header mb-8 mt-14 text-center text-3xl font-medium text-gray-700">
+        Hey,I&apos;m Ayan Ghanta.
+      </h1>
+      <div className="mb-16 flex justify-center">
+        <img
+          src="myPhoto.jpg"
+          alt="photo of ayan ghanta"
+          className="w-14 rounded-full opacity-90 grayscale"
+        />
       </div>
-      <div>
+      <div className="flex flex-col gap-6 px-4 text-gray-700 sm:px-8 sm:text-lg">
         <p>
           A developer passionate about turning ideas into reality through code.
         </p>

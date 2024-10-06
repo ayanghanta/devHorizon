@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Logo() {
   return (
     <Link to="/">
-      <img src="logo.png" alt="devhorizon logo" />
+      <img src="logo.png" alt="devhorizon logo" className="w-24 sm:w-40" />
     </Link>
   );
 }
