@@ -4,7 +4,7 @@ import HomePage from './ui/HomePage';
 import AboutMePage from './ui/AboutMePage';
 import BlogsPage from './ui/BlogsPage';
 import ErrorPage from './ui/ErrorPage';
-import BlogWritePage, { action as blogPostAction } from './ui/BlogWritePage';
+import BlogWritePage from './ui/BlogWritePage';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,6 @@ const router = createBrowserRouter([
       {
         path: '/write',
         element: <BlogWritePage />,
-        action: blogPostAction,
       },
     ],
   },

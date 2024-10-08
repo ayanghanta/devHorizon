@@ -1,24 +1,28 @@
-/*
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 
 const BlogWriteContext = createContext();
 
-function BlogWriteProvider({ children }) {
-  return <BlogWriteContext.Provider>{children}</BlogWriteContext.Provider>;
-}
-
 const initialSate = {
-  blogBlocks: [],
+  blogContent: '',
   // blogBlocks: [],
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'h1':
-      return {};
+    case 'updateContent':
+      return { ...state, blogContent: action.payload };
     default:
       throw new Error('Unknown Action');
   }
+}
+
+function BlogWriteProvider({ children }) {
+  const [{ blogContent }, dispatch] = useReducer(reducer, initialSate);
+  return (
+    <BlogWriteContext.Provider value={{ blogContent, dispatch }}>
+      {children}
+    </BlogWriteContext.Provider>
+  );
 }
 
 function useBlogWrite() {
@@ -30,5 +34,3 @@ function useBlogWrite() {
 }
 
 export { BlogWriteProvider, useBlogWrite };
-
-*/
