@@ -2,7 +2,7 @@ import Button from '../../ui/buttons/Button';
 import { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useBlogWrite } from '../../contexts/writeContext';
+import { useBlogContext } from '../../contexts/writeContext';
 
 const formats = [
   'header',
@@ -32,11 +32,10 @@ const modules = {
 
 function WritingSection() {
   const [editorContent, setEditorContent] = useState('');
-  const { dispatch } = useBlogWrite();
+  const { dispatch } = useBlogContext();
 
   const handleChange = (content, delta, source, editor) => {
     setEditorContent(content);
-    console.log(content);
 
     dispatch({ type: 'updateContent', payload: content });
   };
@@ -56,7 +55,7 @@ function WritingSection() {
           onChange={handleChange}
           formats={formats}
           modules={modules}
-          className="rounded-md"
+          className=""
         />
       </div>
     </div>

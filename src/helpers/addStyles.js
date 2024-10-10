@@ -15,13 +15,17 @@ export const modifyHtml = (html) => {
     ) // Styling for blockquotes
     .replace(
       /<pre>/g,
-      '<pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4">',
+      '<pre className="bg-gray-900 text-gray-100 p-4 rounded-sm overflow-x-auto my-4">',
     )
     .replace(
       /<code>/g,
       `<code className="block font-mono text-sm leading-snug text-white 
-      bg-gray-900 p-2 rounded-md overflow-x-auto">`,
+      bg-gray-900 p-2 rounded-sm overflow-x-auto">`,
     )
     .replace(/<img /g, '<img className="my-4 max-w-full h-auto" ') // Styling for images
+    .replace(
+      /<a /g,
+      '<a className="underline italic hover:text-blue-500 transition duration-300" ',
+    ) // Styling for images
     .replace(/<br\s*\/?>/g, '<br />'); // Handle <br> tags
 };

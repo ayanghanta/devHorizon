@@ -1,36 +1,49 @@
 import { createContext, useContext, useReducer } from 'react';
 
-const BlogWriteContext = createContext();
+const BlogContext = createContext();
 
 const initialSate = {
+  title: '',
+  description: '',
+  category: [],
+  codeLanguage: 'javascript',
+  codeTheme: 'github',
   blogContent: '',
-  // blogBlocks: [],
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case 'updateContent':
       return { ...state, blogContent: action.payload };
+    case 'updateTitle':
+      return { ...state, title: action.payload };
+    case 'updateDescription':
+      return { ...state, description: action.payload };
     default:
       throw new Error('Unknown Action');
   }
 }
 
-function BlogWriteProvider({ children }) {
-  const [{ blogContent }, dispatch] = useReducer(reducer, initialSate);
+function BlogProvider({ children }) {
+  const [{ blogContent, codeTheme, codeLanguage }, dispatch] = useReducer(
+    reducer,
+    initialSate,
+  );
   return (
-    <BlogWriteContext.Provider value={{ blogContent, dispatch }}>
+    <BlogContext.Provider
+      value={{ blogContent, dispatch, codeTheme, codeLanguage }}
+    >
       {children}
-    </BlogWriteContext.Provider>
+    </BlogContext.Provider>
   );
 }
 
-function useBlogWrite() {
-  const context = useContext(BlogWriteContext);
+function useBlogContext() {
+  const context = useContext(BlogContext);
   if (context === undefined)
     throw new Error('You use this BlogWriteContext outside Provider');
 
   return context;
 }
 
-export { BlogWriteProvider, useBlogWrite };
+export { BlogProvider, useBlogContext };

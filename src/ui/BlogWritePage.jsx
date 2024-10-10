@@ -1,6 +1,5 @@
 import WritingSection from '../features/write/WritingSection';
 import DisplaySection from '../features/write/DisplaySection';
-import { BlogWriteProvider } from '../contexts/writeContext';
 
 function BlogWritePage() {
   // console.log(blogBlocks);
@@ -11,10 +10,8 @@ function BlogWritePage() {
         Write, Share, Inspire: Craft Your Blog Post
       </h1>
       <div className="mt-8 grid grid-cols-[4fr_6fr] gap-x-4">
-        <BlogWriteProvider>
-          <WritingSection />
-          <DisplaySection />
-        </BlogWriteProvider>
+        <WritingSection />
+        <DisplaySection />
       </div>
     </div>
   );
