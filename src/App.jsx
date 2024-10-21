@@ -5,6 +5,7 @@ import AboutMePage from './ui/AboutMePage';
 import BlogsPage from './ui/BlogsPage';
 import ErrorPage from './ui/ErrorPage';
 import BlogWritePage from './ui/BlogWritePage';
+import DisplayBlog, { loader as blogLoader } from './features/blog/DisplayBlog';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: '/:blogId',
+        element: <DisplayBlog />,
+        loader: blogLoader,
         errorElement: <ErrorPage />,
       },
       {

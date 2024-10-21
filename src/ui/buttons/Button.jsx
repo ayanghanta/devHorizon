@@ -1,4 +1,4 @@
-function Button({ children, type, onClick }) {
+function Button({ children, type, onClick, role = 'button' }) {
   const base = 'rounded-lg px-2 py-1 text-sm sm:px-4 sm:py-2  ';
   const style = {
     create:
@@ -15,11 +15,15 @@ function Button({ children, type, onClick }) {
 
   if (onClick)
     return (
-      <button className={style[type]} onClick={onClick}>
+      <button className={style[type]} onClick={onClick} type={role}>
         {children}
       </button>
     );
-  return <button className={style[type]}>{children}</button>;
+  return (
+    <button className={style[type]} type={role}>
+      {children}
+    </button>
+  );
 }
 
 export default Button;

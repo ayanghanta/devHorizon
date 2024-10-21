@@ -1,14 +1,26 @@
 export const modifyHtml = (html) => {
   // Add Tailwind CSS classes to elements
   return html
-    .replace(/<h1>/g, '<h1 className="text-4xl font-semibold mb-4">')
-    .replace(/<h2>/g, '<h2 className="text-3xl font-medium my-3">')
-    .replace(/<h3>/g, '<h3 className="text-2xl font-medium my-2">')
-    .replace(/<h4>/g, '<h3 className="text-xl font-medium my-2">')
+    .replace(
+      /<h1>/g,
+      '<h1 className="text-4xl font-semibold mb-4 text-gray-800">',
+    )
+    .replace(
+      /<h2>/g,
+      '<h2 className="text-3xl font-medium mb-3  text-gray-800">',
+    )
+    .replace(
+      /<h3>/g,
+      '<h3 className="text-2xl font-medium mb-2  text-gray-800">',
+    )
+    .replace(
+      /<h4>/g,
+      '<h3 className="text-xl font-medium mb-2  text-gray-800">',
+    )
     .replace(/<p>/g, '<p className="text-base">')
-    .replace(/<ul>/g, '<ul className="list-disc pl-5 my-3 ">')
-    .replace(/<ol>/g, '<ol className="list-decimal pl-5 my-2">')
-    .replace(/<li>/g, '<li className="my-1">')
+    .replace(/<ul>/g, '<ul className="list-disc pl-5 mb-3 ">')
+    .replace(/<ol>/g, '<ol className="list-decimal pl-5 mb-2">')
+    .replace(/<li>/g, '<li className="mb-1">')
     .replace(
       /<blockquote>/g,
       '<blockquote className="border-l-4 px-4 py-2 my-4 italic text-gray-600 bg-gray-50">',

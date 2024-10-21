@@ -1,51 +1,54 @@
-import { modifyHtml } from '../../helpers/addStyles';
 import { useBlogContext } from '../../contexts/writeContext';
-import parse, { domToReact } from 'html-react-parser';
-import CodeBlock from '../../utils/CodeBlock';
-import { useState } from 'react';
+import Button from '../../ui/buttons/Button';
+import { useForm } from 'react-hook-form';
+import { createBlog } from '../../services/apiBlog';
+import BlogContentDesplay from '../blog/BlogContentDesplay';
 
 function DisplaySection() {
-  const { blogContent: rowContent, codeTheme, codeLanguage } = useBlogContext();
-  const [blogTitle, setBlogTitle] = useState('');
-  const [blogDescription, setBlogDescription] = useState('');
+  const { blogContent: rowContent } = useBlogContext();
+  const { register, handleSubmit } = useForm();
 
-  const replaceOptions = {
-    replace({ attribs, children }) {
-      if (!attribs) return;
+  async function handleBlogCreate(data) {
+    const newBlogData = { ...data, content: rowContent };
 
-      if (attribs.class === 'ql-syntax') {
-        return (
-          <CodeBlock theme={codeTheme} codeLanguage={codeLanguage}>
-            {domToReact(children, replaceOptions)}
-          </CodeBlock>
-        );
-      }
-    },
-  };
-
-  const styledBlogContent = modifyHtml(rowContent);
-
-  const blogDOM = parse(styledBlogContent, replaceOptions);
+    const newBlog = await createBlog(newBlogData);
+    console.log(newBlog);
+  }
 
   return (
     <div>
-      <div className="mb-6 flex flex-col gap-3">
+      <form
+        className="mb-6 flex flex-col gap-3"
+        onSubmit={handleSubmit(handleBlogCreate)}
+      >
+        <input
+          type="file"
+          name="blogCoverImage"
+          id="blogCoverImage"
+          // {...register('blogCoverImage')}
+        />
         <textarea
           className="block h-auto w-full resize-none rounded-sm bg-gray-100 px-2 py-2 text-4xl text-gray-900 outline-none"
           placeholder="Blog Title..."
-          value={blogTitle}
-          onChange={(e) => setBlogTitle(e.target.value)}
+          {...register('title')}
           rows={2} // This defines how many lines of text will be visible initially
         />
         <textarea
           className="block h-auto w-full resize-none rounded-sm bg-gray-100 px-2 py-2 text-sm italic text-gray-900 outline-none"
           placeholder="Blog Description..."
-          value={blogDescription}
-          onChange={(e) => setBlogDescription(e.target.value)}
-          rows={3} // This defines how many lines of text will be visible initially
+          {...register('description')}
+          rows={3}
         />
-      </div>
-      {blogDOM}
+        <BlogContentDesplay>{rowContent}</BlogContentDesplay>
+        <div className="mt-16 space-x-4 text-right">
+          <Button type="secondary" role="reset">
+            Clear
+          </Button>
+          <Button type="primary" role="submit">
+            Create Blog
+          </Button>
+        </div>
+      </form>
     </div>
   );
 }
