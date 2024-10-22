@@ -1,24 +1,37 @@
-function SquarBlogCard() {
+import { Link } from 'react-router-dom';
+import { formatDate } from '../../utils/formatDate';
+
+const PUBLIC_URL = `http://localhost:3000/blog`;
+
+function SquarBlogCard({ blog }) {
+  const { title, description, blogCoverImage, publishedAt, _id: id } = blog;
+
   return (
     <div className="rounded border border-gray-200 bg-gray-50 p-3 transition duration-300 hover:shadow-md">
       <img
-        src="testblog.png"
+        src={`${PUBLIC_URL}/${blogCoverImage}`}
         alt="poster of the BLOG TITLE"
         className="rounded"
       />
       <div>
-        <p className="font-header mb-3 text-lg text-gray-700 sm:mt-2 sm:text-2xl">
-          How Much Firewood Do You Need for Your Camping Trip?
-        </p>
+        <Link
+          className="mb-3 block font-header text-lg text-gray-700 transition duration-200 hover:underline sm:mt-2 sm:text-2xl"
+          to={`/blogs/${id}`}
+        >
+          {title}
+        </Link>
         <p className="mb-2 text-[10px] font-medium capitalize text-gray-400">
-          Septembar 4,2024
+          {formatDate(publishedAt, 'long')}
         </p>
-        <p className="text-xs text-gray-500 sm:text-sm">
-          Plan your camping firewood nneds for weekends and weeklong trips.
-          Learn how many bundles to bring for a cozy and anojyable campfire
-          experience.
-        </p>
-        <div className="ml-auto w-5 cursor-pointer sm:text-2xl">&rarr;</div>
+        <p className="text-xs text-gray-500 sm:text-sm">{description}</p>
+        <div className="text-right">
+          <Link
+            className="ml-auto w-5 cursor-pointer sm:text-2xl"
+            to={`/blogs/${id}`}
+          >
+            &rarr;
+          </Link>
+        </div>
       </div>
     </div>
   );

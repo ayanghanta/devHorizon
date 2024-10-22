@@ -1,7 +1,7 @@
 function AboutMePage() {
   return (
     <div className="mx-auto max-w-4xl">
-      <h1 className="font-header mb-8 mt-14 text-center text-3xl font-medium text-gray-700">
+      <h1 className="mb-8 mt-14 text-center font-header text-3xl font-medium text-gray-700">
         Hey,I&apos;m Ayan Ghanta.
       </h1>
       <div className="mb-16 flex justify-center">

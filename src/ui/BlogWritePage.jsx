@@ -1,6 +1,5 @@
 import WritingSection from '../features/write/WritingSection';
-import DisplaySection from '../features/write/DisplaySection';
-
+import BlogPreview from '../features/write/BlogPreview';
 function BlogWritePage() {
   // console.log(blogBlocks);
 
@@ -11,7 +10,7 @@ function BlogWritePage() {
       </h1>
       <div className="mt-8 grid grid-cols-[4fr_6fr] gap-x-4">
         <WritingSection />
-        <DisplaySection />
+        <BlogPreview />
       </div>
     </div>
   );

@@ -7,19 +7,23 @@ export const modifyHtml = (html) => {
     )
     .replace(
       /<h2>/g,
-      '<h2 className="text-3xl font-medium mb-3  text-gray-800">',
+      '<h2 className="text-4xl font-semibold mb-5 mt-12 text-gray-800 font-header">',
     )
     .replace(
       /<h3>/g,
-      '<h3 className="text-2xl font-medium mb-2  text-gray-800">',
+      '<h3 className="text-3xl font-semibold mb-4 mt-8  text-gray-800 font-header">',
     )
     .replace(
       /<h4>/g,
-      '<h3 className="text-xl font-medium mb-2  text-gray-800">',
+      '<h4 className="text-2xl font-semibold my-4  text-gray-800 font-header">',
+    )
+    .replace(
+      /<h5>/g,
+      '<h5 className="text-xl font-semibold mb-2 mt-3  text-gray-800 font-header">',
     )
     .replace(/<p>/g, '<p className="text-base">')
-    .replace(/<ul>/g, '<ul className="list-disc pl-5 mb-3 ">')
-    .replace(/<ol>/g, '<ol className="list-decimal pl-5 mb-2">')
+    .replace(/<ul>/g, '<ul className="list-disc mb-4 mt-3 ml-9">')
+    .replace(/<ol>/g, '<ol className="list-decimal mb-2 mt-3 ml-8">')
     .replace(/<li>/g, '<li className="mb-1">')
     .replace(
       /<blockquote>/g,
