@@ -9,7 +9,7 @@ import {
   nightOwl,
   github,
 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-const themes = {
+export const themes = {
   atomOneDark,
   monokai,
   vs,
@@ -25,6 +25,10 @@ function CodeBlock({ children, theme, codeLanguage }) {
     <SyntaxHighlighter
       language={codeLanguage}
       style={themes[theme]}
+      showLineNumbers={false}
+      showInlineLineNumbers={false}
+      wrapLines={true}
+      wrapLongLines={true}
       customStyle={{ borderRadius: '2px' }}
     >
       {children}

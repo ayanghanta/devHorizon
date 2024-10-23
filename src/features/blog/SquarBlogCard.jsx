@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { formatDate } from '../../utils/formatDate';
+import CollapsText from '../../utils/CollapsText';
 
 const PUBLIC_URL = `http://localhost:3000/blog`;
 
-function SquarBlogCard({ blog }) {
+function SquarBlogCard({ blog = {} }) {
   const { title, description, blogCoverImage, publishedAt, _id: id } = blog;
 
   return (
@@ -23,7 +24,9 @@ function SquarBlogCard({ blog }) {
         <p className="mb-2 text-[10px] font-medium capitalize text-gray-400">
           {formatDate(publishedAt, 'long')}
         </p>
-        <p className="text-xs text-gray-500 sm:text-sm">{description}</p>
+        <p className="text-xs text-gray-500 sm:text-sm">
+          <CollapsText>{description}</CollapsText>
+        </p>
         <div className="text-right">
           <Link
             className="ml-auto w-5 cursor-pointer sm:text-2xl"

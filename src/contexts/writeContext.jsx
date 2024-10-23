@@ -9,6 +9,8 @@ const initialSate = {
   codeLanguage: 'javascript',
   codeTheme: 'github',
   blogContent: '',
+  writingMode: 'create',
+  blogId: '',
 };
 
 function reducer(state, action) {
@@ -19,19 +21,42 @@ function reducer(state, action) {
       return { ...state, title: action.payload };
     case 'updateDescription':
       return { ...state, description: action.payload };
+    case 'updateTheme':
+      return { ...state, codeTheme: action.payload };
+    case 'changeWritingMode':
+      return { ...state, writingMode: action.payload };
+    case 'setBlogId':
+      return { ...state, blogId: action.payload };
     default:
       throw new Error('Unknown Action');
   }
 }
 
 function BlogProvider({ children }) {
-  const [{ blogContent, codeTheme, codeLanguage }, dispatch] = useReducer(
-    reducer,
-    initialSate,
-  );
+  const [
+    {
+      blogContent,
+      codeTheme,
+      codeLanguage,
+      title,
+      description,
+      writingMode,
+      blogId,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialSate);
   return (
     <BlogContext.Provider
-      value={{ blogContent, dispatch, codeTheme, codeLanguage }}
+      value={{
+        blogContent,
+        codeTheme,
+        codeLanguage,
+        title,
+        description,
+        writingMode,
+        blogId,
+        dispatch,
+      }}
     >
       {children}
     </BlogContext.Provider>

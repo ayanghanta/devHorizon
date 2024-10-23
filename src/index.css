@@ -2,7 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-pre {
-  margin-top: 12px;
-  margin-bottom: 12px;
+@layer components {
+  pre {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  /* SPINNER SOURCE: https://css-loaders.com/progress/ */
+  .loader {
+    height: 12px;
+    margin: 96px auto;
+    width: 50%;
+    /* width: 130px; */
+    --c: no-repeat linear-gradient(#29292b 0 0);
+    background: var(--c), var(--c), #b3b3b4;
+    background-size: 60% 100%;
+    animation: l16 3s infinite;
+  }
+  @keyframes l16 {
+    0% {
+      background-position:
+        -150% 0,
+        -150% 0;
+    }
+    66% {
+      background-position:
+        250% 0,
+        -150% 0;
+    }
+    100% {
+      background-position:
+        250% 0,
+        250% 0;
+    }
+  }
 }

@@ -3,8 +3,14 @@ import { useBlogContext } from '../../contexts/writeContext';
 import { modifyHtml } from '../../helpers/addStyles';
 import CodeBlock from '../../utils/CodeBlock';
 
-function BlogContentDesplay({ children, type = 'writing' }) {
-  const { codeTheme, codeLanguage } = useBlogContext();
+function BlogContentDesplay({
+  children,
+  type = 'preview',
+  codeTheme,
+  codeLng,
+}) {
+  const { codeTheme: codeThemeContext, codeLanguage: codeLngContext } =
+    useBlogContext();
 
   // console.log(codeTheme, codeLanguage);
 
@@ -15,7 +21,10 @@ function BlogContentDesplay({ children, type = 'writing' }) {
 
       if (attribs.class === 'ql-syntax') {
         return (
-          <CodeBlock theme={codeTheme} codeLanguage={codeLanguage}>
+          <CodeBlock
+            theme={type === 'preview' ? codeThemeContext : codeTheme}
+            codeLanguage={type === 'preview' ? codeLngContext : codeLng}
+          >
             {domToReact(children, replaceOptions)}
           </CodeBlock>
         );

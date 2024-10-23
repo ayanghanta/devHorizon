@@ -3,11 +3,11 @@ import Footer from './Footer';
 import ScrolltoTop from '../utils/ScrolltoTop';
 import PageNav from './PageNav';
 
-function AppLayout() {
+function DashBordLayout() {
   return (
     <>
       <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
-        <PageNav />
+        <PageNav type="dashBoard" />
 
         <main className="px-3">
           <Outlet />
@@ -20,4 +20,4 @@ function AppLayout() {
   );
 }
 
-export default AppLayout;
+export default DashBordLayout;

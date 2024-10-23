@@ -7,7 +7,14 @@ const PUBLIC_URL = `http://localhost:3000/blog`;
 
 function DisplayBlog() {
   const blog = useLoaderData();
-  const { title, blogCoverImage, description, publishedAt } = blog;
+  const {
+    title,
+    blogCoverImage,
+    description,
+    publishedAt,
+    codeTheme,
+    codeLanguage,
+  } = blog;
 
   return (
     <div className="mx-auto mt-20 max-w-4xl">
@@ -22,7 +29,13 @@ function DisplayBlog() {
         alt={`cover image of ${title}`}
       />
       <p className="mb-12 italic text-gray-500">{description}</p>
-      <BlogContentDesplay>{blog.content}</BlogContentDesplay>
+      <BlogContentDesplay
+        type="presenting"
+        codeTheme={codeTheme}
+        codeLng={codeLanguage}
+      >
+        {blog.content}
+      </BlogContentDesplay>
     </div>
   );
 }

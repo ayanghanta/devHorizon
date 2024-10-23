@@ -1,33 +1,52 @@
 import { useBlogContext } from '../../contexts/writeContext';
 import Button from '../../ui/buttons/Button';
 import { useForm } from 'react-hook-form';
-import { createBlog } from '../../services/apiBlog';
 import BlogContentDesplay from '../blog/BlogContentDesplay';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUpdateBlog } from '../../admin/manageBlogs/useUpdateBlog';
+import { useCreateBlog } from '../../admin/manageBlogs/useCreateBlog';
 
 function BlogPreview() {
-  const { blogContent: rowContent } = useBlogContext();
-  const { register, handleSubmit } = useForm();
-  const [isPosting, setIsPosting] = useState(false);
+  const {
+    blogContent: rowContent,
+    codeTheme,
+    codeLanguage,
+    writingMode,
+    blogId,
+    title,
+    description,
+  } = useBlogContext();
+  const { register, handleSubmit } = useForm({
+    defaultValues: { title, description },
+  });
+  const { isLoading: isCreating, createBlog } = useCreateBlog();
+  const { isLoading: isUpdating, updateBlog } = useUpdateBlog();
   const navigate = useNavigate();
 
   async function handleBlogCreate(data) {
-    setIsPosting(true);
     const formData = new FormData();
 
     formData.append('title', data.title);
     formData.append('description', data.description);
     formData.append('content', rowContent);
-    formData.append('blogCoverImage', data.blogCoverImage[0]); // Append the file
+    formData.append('codeTheme', codeTheme);
+    formData.append('codeLanguage', codeLanguage);
+    if (data.blogCoverImage[0])
+      formData.append('blogCoverImage', data.blogCoverImage[0]);
 
-    const newBlog = await createBlog(formData);
-    setIsPosting(false);
-    // FIXME:
-    setTimeout(() => {
-      setIsPosting(false);
-      navigate(`/blogs/${newBlog._id}`);
-    }, 2000); // 2000ms = 2 seconds
+    if (writingMode === 'create')
+      createBlog(formData, {
+        onSuccess: (blog) => navigate(`/blogs/${blog._id}`),
+      });
+
+    if (writingMode === 'update')
+      updateBlog(
+        { id: blogId, BlogData: formData },
+        {
+          onSuccess: (blog) => navigate(`/blogs/${blog._id}`),
+        },
+      );
   }
 
   return (
@@ -39,7 +58,10 @@ function BlogPreview() {
           name="blogCoverImage"
           id="blogCoverImage"
           {...register('blogCoverImage', {
-            required: 'coverimage is required for the blog',
+            required:
+              writingMode === 'update'
+                ? false
+                : 'coverimage is required for the blog',
           })}
         />
         <textarea
@@ -60,12 +82,24 @@ function BlogPreview() {
         />
         <BlogContentDesplay>{rowContent}</BlogContentDesplay>
         <div className="mt-16 space-x-4 text-right">
-          <Button type="secondary" role="reset">
-            Clear
-          </Button>
-          <Button type="primary" role="submit">
-            {isPosting ? 'Creating...' : 'Create Blog'}
-          </Button>
+          {writingMode === 'create' && (
+            <>
+              <Button type="secondary" role="reset">
+                Clear
+              </Button>
+              <Button type="primary" role="submit">
+                {isCreating ? 'Creating...' : 'Create Blog'}
+              </Button>
+            </>
+          )}
+          {writingMode === 'update' && (
+            <>
+              <Button type="secondary">Cancel</Button>
+              <Button type="primary" role="submit">
+                {isUpdating ? 'Updating...' : 'Update'}
+              </Button>
+            </>
+          )}
         </div>
       </form>
     </div>
