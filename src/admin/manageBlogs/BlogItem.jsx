@@ -1,9 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../ui/buttons/Button';
-import { PiRocket, PiNotePencil, PiTrash, PiSpinner } from 'react-icons/pi';
+import {
+  PiRocket,
+  PiNotePencil,
+  PiTrash,
+  PiSpinner,
+  PiEyeSlash,
+} from 'react-icons/pi';
 import { formatDate } from '../../utils/formatDate';
 
-import { useDeleteBlog } from './useDeleteB,log';
+import { useDeleteBlog } from './useDeleteB,log.js';
+import { useUpdateBlog } from './usePublishBlog.js';
 import { useBlogContext } from '../../contexts/writeContext';
 
 const PUBLIC_URL = `http://localhost:3000/blog`;
@@ -17,9 +24,12 @@ function BlogItem({ blog }) {
     content: savedBlogContent,
     _id: id,
     likes,
+    isPublished,
   } = blog;
   const { dispatch } = useBlogContext();
   const { isLoading, deleteBlog } = useDeleteBlog();
+  const { isLoading: isPublishing, publish } = useUpdateBlog();
+
   const navigate = useNavigate();
 
   function handleEditBlog() {
@@ -47,9 +57,21 @@ function BlogItem({ blog }) {
       <p className="text-center"> {formatDate(publishedAt, 'long')}</p>
       <p className="text-center">{likes}</p>
       <div className="flex gap-2 justify-self-center">
-        <Button type="publish">
-          <PiRocket className="text-xl" />
-        </Button>
+        {isPublished ? (
+          <Button
+            type="hide"
+            onClick={() => publish({ id, isPublished: false })}
+          >
+            <PiEyeSlash className="text-xl" />
+          </Button>
+        ) : (
+          <Button
+            type="publish"
+            onClick={() => publish({ id, isPublished: true })}
+          >
+            <PiRocket className="text-xl" />
+          </Button>
+        )}
         <Button type="edit" onClick={handleEditBlog}>
           <PiNotePencil className="text-xl" />
         </Button>

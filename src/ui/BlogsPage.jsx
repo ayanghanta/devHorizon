@@ -1,7 +1,7 @@
 import WideBlogCard from '../features/blog/WideBlogCard';
 import SquarBlogCard from '../features/blog/SquarBlogCard';
 import SmallBlogCard from '../features/blog/SmallBlogCard';
-import { getAllBlogs } from '../services/apiBlog';
+import { getPublishedBlogs } from '../services/apiBlog';
 import { useLoaderData } from 'react-router-dom';
 
 function BlogsPage() {
@@ -43,7 +43,7 @@ function BlogsPage() {
 }
 
 export async function loader() {
-  const blogs = await getAllBlogs();
+  const blogs = await getPublishedBlogs();
 
   return blogs;
 }

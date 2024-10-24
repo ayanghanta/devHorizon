@@ -1,16 +1,17 @@
 import BlogItem from './BlogItem';
-import { getAllBlogs } from '../../services/apiBlog';
+import { getPublishedBlogs } from '../../services/apiBlog';
+import { getDarftBlogs } from '../../services/apiDraftBlog';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../../ui/Spinner';
 
-function BlogsTable() {
+function BlogsTable({ type }) {
   const {
     data: blogs,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ['blogs'],
-    queryFn: getAllBlogs,
+    queryKey: type === 'draft' ? ['draftBlogs'] : ['publishBlogs'],
+    queryFn: type === 'draft' ? getDarftBlogs : getPublishedBlogs,
   });
 
   if (isLoading) return <Spinner />;

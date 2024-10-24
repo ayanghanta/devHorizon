@@ -8,12 +8,14 @@ function DashBoard() {
         <p className="font-header text-2xl font-semibold">
           Devhorizon Public Blogs
         </p>
-        <BlogsTable />
+        <BlogsTable type="published" />
       </div>
-      {/* <div>
-        <p className="font-header text-2xl font-semibold">Draft Blogs</p>
-        <BlogsTable />
-      </div> */}
+      <div>
+        <p className="mt-12 font-header text-2xl font-semibold">
+          Devhorizon Draft Blogs
+        </p>
+        <BlogsTable type="draft" />
+      </div>
     </div>
   );
 }

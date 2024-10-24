@@ -2,7 +2,6 @@ import { useBlogContext } from '../../contexts/writeContext';
 import Button from '../../ui/buttons/Button';
 import { useForm } from 'react-hook-form';
 import BlogContentDesplay from '../blog/BlogContentDesplay';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUpdateBlog } from '../../admin/manageBlogs/useUpdateBlog';
 import { useCreateBlog } from '../../admin/manageBlogs/useCreateBlog';
@@ -107,29 +106,3 @@ function BlogPreview() {
 }
 
 export default BlogPreview;
-
-/*
-
-
-  const replaceOptions = {
-    replace({ attribs, children }) {
-      if (!attribs) return;
-
-      if (attribs.class === 'ql-syntax') {
-        return (
-          <pre
-            spellCheck="false"
-            className="my-4 overflow-x-auto rounded-sm bg-gray-100 p-4 text-gray-800"
-          >
-            <code className="language-javascript block overflow-x-auto rounded-sm bg-gray-100 p-2 font-mono text-sm leading-snug text-gray-800">
-              <CodeBlock theme={codeTheme}>
-                {domToReact(children, replaceOptions)}
-              </CodeBlock>
-            </code>
-          </pre>
-        );
-      }
-    },
-  };
-
-*/

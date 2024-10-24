@@ -24,6 +24,7 @@ function Button({
     delete: editbase + ' bg-red-500 hover:bg-red-700',
     edit: editbase + 'bg-amber-500 hover:bg-amber-700',
     publish: editbase + 'bg-green-500 hover:bg-green-700',
+    hide: editbase + 'bg-indigo-500 hover:bg-indigo-700',
   };
 
   if (onClick)
