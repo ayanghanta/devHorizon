@@ -5,10 +5,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AppLayout from './ui/AppLayout';
 import HomePage from './ui/HomePage';
 import AboutMePage from './ui/AboutMePage';
-import BlogsPage, { loader as allBlogsLoader } from './ui/BlogsPage';
+import BlogsPage from './ui/BlogsPage';
 import ErrorPage from './ui/ErrorPage';
 import BlogWritePage from './ui/BlogWritePage';
-import DisplayBlog, { loader as blogLoader } from './features/blog/DisplayBlog';
+import DisplayBlog from './features/blog/DisplayBlog';
 import DashBoard from './ui/DashBoard';
 import DashBordLayout from './ui/DashBordLayout';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -35,7 +35,6 @@ const router = createBrowserRouter([
       {
         path: '/blogs/:blogId',
         element: <DisplayBlog />,
-        loader: blogLoader,
         errorElement: <ErrorPage />,
       },
       {
@@ -45,7 +44,6 @@ const router = createBrowserRouter([
       },
       {
         path: '/blogs',
-        loader: allBlogsLoader,
         element: <BlogsPage />,
         errorElement: <ErrorPage />,
       },

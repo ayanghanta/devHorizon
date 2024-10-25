@@ -7,9 +7,8 @@ export function useDeleteBlog() {
   const { isLoading, mutate: deleteBlog } = useMutation({
     mutationFn: (id) => deleteBlogApi(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['blogs'],
-      });
+      queryClient.invalidateQueries({ queryKey: ['draftBlogs'] });
+      queryClient.invalidateQueries({ queryKey: ['publishBlogs'] });
       toast.success('Blog successfully deleted');
     },
     onError: () => {

@@ -11,7 +11,7 @@ function BlogsTable({ type }) {
     isError,
   } = useQuery({
     queryKey: type === 'draft' ? ['draftBlogs'] : ['publishBlogs'],
-    queryFn: type === 'draft' ? getDarftBlogs : getPublishedBlogs,
+    queryFn: () => (type === 'draft' ? getDarftBlogs() : getPublishedBlogs()),
   });
 
   if (isLoading) return <Spinner />;
@@ -26,6 +26,11 @@ function BlogsTable({ type }) {
         <p className="text-center text-lg">Actions</p>
       </div>
       <div className="flex flex-col gap-3 bg-gray-50 pt-2 [&>*:nth-child(even)]:bg-gray-100">
+        {blogs.length === 0 && (
+          <p className="py-4 text-center text-xl text-gray-500">
+            There is no Blog
+          </p>
+        )}
         {blogs.map((blog) => (
           <BlogItem blog={blog} key={blog._id} />
         ))}

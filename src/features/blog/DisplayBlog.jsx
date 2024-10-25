@@ -1,12 +1,21 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { getBlog } from '../../services/apiBlog';
 import BlogContentDesplay from './BlogContentDesplay';
 import BlogInfo from './BlogInfo';
+import { useQuery } from '@tanstack/react-query';
+import Spinner from '../../ui/Spinner';
 
 const PUBLIC_URL = `http://localhost:3000/blog`;
 
 function DisplayBlog() {
-  const blog = useLoaderData();
+  const { blogId } = useParams();
+  const { data: blog, isLoading } = useQuery({
+    queryKey: ['blog'],
+    queryFn: () => getBlog(blogId),
+  });
+
+  if (isLoading) return <Spinner />;
+
   const {
     title,
     blogCoverImage,
@@ -38,12 +47,6 @@ function DisplayBlog() {
       </BlogContentDesplay>
     </div>
   );
-}
-
-export async function loader({ params }) {
-  const data = await getBlog(params.blogId);
-
-  return data;
 }
 
 export default DisplayBlog;

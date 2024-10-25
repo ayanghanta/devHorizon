@@ -1,17 +1,26 @@
-function SmallBlogCard() {
+import { Link } from 'react-router-dom';
+
+const PUBLIC_URL = `http://localhost:3000/blog`;
+function SmallBlogCard({ blog }) {
   return (
     <div className="relative flex gap-3 rounded border border-gray-200 bg-gray-50 p-3 transition duration-300 hover:shadow-md sm:flex-row">
       <img
-        src="testblog2.png"
+        src={`${PUBLIC_URL}/${blog.blogCoverImage}`}
         alt="image of a TEST BLOG"
         className="w-6/12 rounded"
       />
-      <p className="font-header mb-3 text-base">
-        Exploring Mountan&apos;s Coolest Summer Camping and Sports
-      </p>
-      <span className="absolute bottom-0 right-5 cursor-pointer text-lg sm:bottom-3">
+      <Link
+        to={`/blogs/${blog._id}`}
+        className="mb-3 block font-header text-base transition duration-200 hover:underline"
+      >
+        {blog.title}
+      </Link>
+      <Link
+        to={`/blogs/${blog._id}`}
+        className="absolute bottom-0 right-5 block cursor-pointer text-lg sm:bottom-3"
+      >
         &rarr;
-      </span>
+      </Link>
     </div>
   );
 }

@@ -57,24 +57,36 @@ function BlogItem({ blog }) {
       <p className="text-center"> {formatDate(publishedAt, 'long')}</p>
       <p className="text-center">{likes}</p>
       <div className="flex gap-2 justify-self-center">
-        {isPublished ? (
+        {isPublished && (
           <Button
             type="hide"
             onClick={() => publish({ id, isPublished: false })}
           >
-            <PiEyeSlash className="text-xl" />
+            {isPublishing ? (
+              <PiSpinner className="text-xl" />
+            ) : (
+              <PiEyeSlash className="text-xl" />
+            )}
           </Button>
-        ) : (
+        )}
+
+        {!isPublished && (
           <Button
             type="publish"
             onClick={() => publish({ id, isPublished: true })}
           >
-            <PiRocket className="text-xl" />
+            {isPublishing ? (
+              <PiSpinner className="text-xl" />
+            ) : (
+              <PiRocket className="text-xl" />
+            )}
           </Button>
         )}
+
         <Button type="edit" onClick={handleEditBlog}>
           <PiNotePencil className="text-xl" />
         </Button>
+
         <Button
           type="delete"
           onClick={() => deleteBlog(id)}

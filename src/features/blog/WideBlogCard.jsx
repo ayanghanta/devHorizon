@@ -1,24 +1,37 @@
-function wideBlogCard() {
+import { Link } from 'react-router-dom';
+import { formatDate } from '../../utils/formatDate';
+import CollapsText from '../../utils/CollapsText';
+
+const PUBLIC_URL = `http://localhost:3000/blog`;
+
+function wideBlogCard({ blog }) {
+  const { title, description, blogCoverImage, publishedAt, _id: id } = blog;
   return (
-    <div className="mb-12 rounded border border-gray-400 p-3 transition duration-300 hover:shadow-md sm:flex sm:gap-6">
+    <div className="mb-12 items-start rounded border border-gray-400 p-3 transition duration-300 hover:shadow-md sm:flex sm:gap-6">
       <img
-        src="testblog.png"
+        src={`${PUBLIC_URL}/${blogCoverImage}`}
         alt="poster of the BLOG TITLE"
         className="rounded sm:w-6/12"
       />
       <div>
-        <p className="font-header mb-3 text-lg font-medium text-gray-900 sm:text-2xl">
-          How Much Firewood Do You Need for Your Camping Trip?
-        </p>
+        <Link
+          to={`/blogs/${id}`}
+          className="mb-3 block font-header text-lg font-medium text-gray-900 transition duration-200 hover:underline sm:text-2xl"
+        >
+          {title}
+        </Link>
         <p className="mb-2 text-[10px] font-medium capitalize text-gray-400 sm:text-[12px]">
-          septembar 4,2024
+          {formatDate(publishedAt, 'long')}
         </p>
         <p className="text-xs text-gray-600 sm:text-base">
-          Plan your camping firewood nneds for weekends and weeklong trips.
-          Learn how many bundles to bring for a cozy and anojyable campfire
-          experience.
+          <CollapsText wordShown={25}>{description}</CollapsText>
         </p>
-        <div className="ml-auto mr-2 w-5 sm:text-2xl">&rarr;</div>
+        <Link
+          to={`/blogs/${id}`}
+          className="ml-auto mr-2 block w-5 sm:text-2xl"
+        >
+          &rarr;
+        </Link>
       </div>
     </div>
   );

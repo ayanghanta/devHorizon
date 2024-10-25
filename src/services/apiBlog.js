@@ -1,8 +1,11 @@
 const BASE_URL = `http://localhost:3000/api/v1/blogs`;
 
-export async function getPublishedBlogs() {
+export async function getPublishedBlogs(aliasUrl = '') {
+  let reqUrl = BASE_URL;
+  if (aliasUrl) reqUrl = `${BASE_URL}/${aliasUrl}`;
+
   try {
-    const res = await fetch(BASE_URL);
+    const res = await fetch(reqUrl);
     const data = await res.json();
     if (!data.ok) throw new Error('Somthing went wrong in getting all blogs!');
 
