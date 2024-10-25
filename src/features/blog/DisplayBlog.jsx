@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getBlog } from '../../services/apiBlog';
 import BlogContentDesplay from './BlogContentDesplay';
 import BlogInfo from './BlogInfo';
