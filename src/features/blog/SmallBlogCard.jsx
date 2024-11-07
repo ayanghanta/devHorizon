@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
+import { PUBLIC_URL } from '../../constant';
 
-const PUBLIC_URL = `http://localhost:3000/blog`;
 function SmallBlogCard({ blog }) {
   return (
     <div className="relative flex gap-3 rounded border border-gray-200 bg-gray-50 p-3 transition duration-300 hover:shadow-md sm:flex-row">

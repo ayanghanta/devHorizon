@@ -2,7 +2,10 @@ const BASE_URL = `http://localhost:3000/api/v1/blogs/draft`;
 
 export async function getDarftBlogs() {
   try {
-    const res = await fetch(BASE_URL);
+    const res = await fetch(BASE_URL, {
+      method: 'GET',
+      credentials: 'include',
+    });
     const data = await res.json();
     if (!data.ok) throw new Error('Somthing went wrong in getting Drft blogs!');
 
@@ -16,6 +19,7 @@ export async function saveDraftBlog(newBlog) {
     const res = await fetch(`${BASE_URL}`, {
       method: 'POST',
       body: newBlog,
+      credentials: 'include',
     });
 
     const data = await res.json();

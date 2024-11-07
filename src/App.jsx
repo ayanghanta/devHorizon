@@ -1,18 +1,22 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
-import AppLayout from './ui/AppLayout';
-import HomePage from './ui/HomePage';
-import AboutMePage from './ui/AboutMePage';
-import BlogsPage from './ui/BlogsPage';
-import ErrorPage from './ui/ErrorPage';
-import BlogWritePage from './ui/BlogWritePage';
-import DisplayBlog from './features/blog/DisplayBlog';
-import DashBoard from './ui/DashBoard';
-import DashBordLayout from './ui/DashBordLayout';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
+
+import Login from './ui/Login';
+import HomePage from './ui/HomePage';
+import AppLayout from './ui/AppLayout';
+import BlogsPage from './ui/BlogsPage';
+import ErrorPage from './ui/ErrorPage';
+import DashBoard from './ui/DashBoard';
+import AboutMePage from './ui/AboutMePage';
+import BlogWritePage from './ui/BlogWritePage';
+import DashBordLayout from './ui/DashBordLayout';
+import ForgotPassword from './ui/ForgotPassword';
+import DisplayBlog from './features/blog/DisplayBlog';
+import UpdateAdmin from './admin/manageAdmin/UpdateAdmin';
+import AddNewAdmin from './admin/manageAdmin/AddNewAdmin';
+import ProtectedRoutes from './ui/ProtectedRoutes';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -47,20 +51,41 @@ const router = createBrowserRouter([
         element: <BlogsPage />,
         errorElement: <ErrorPage />,
       },
+
       {
-        path: '/write',
-        element: <BlogWritePage />,
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/forgotpassword',
+        element: <ForgotPassword />,
       },
     ],
   },
   {
     path: '/admin',
-    element: <DashBordLayout />,
+    element: (
+      <ProtectedRoutes>
+        <DashBordLayout />
+      </ProtectedRoutes>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
         path: 'dashboard',
         element: <DashBoard />,
+      },
+      {
+        path: 'config',
+        element: <UpdateAdmin />,
+      },
+      {
+        path: 'add',
+        element: <AddNewAdmin />,
+      },
+      {
+        path: 'write',
+        element: <BlogWritePage />,
       },
     ],
   },

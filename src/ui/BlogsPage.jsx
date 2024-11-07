@@ -2,7 +2,6 @@ import WideBlogCard from '../features/blog/WideBlogCard';
 import SquarBlogCard from '../features/blog/SquarBlogCard';
 import SmallBlogCard from '../features/blog/SmallBlogCard';
 import { getPublishedBlogs } from '../services/apiBlog';
-import { useLoaderData } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Loader from './Loader';
 
@@ -57,12 +56,6 @@ function BlogsPage() {
           {allBlogs.map((blog) => (
             <SmallBlogCard blog={blog} key={blog._id} />
           ))}
-          {/* 
-          <SmallBlogCard />
-          <SmallBlogCard />
-          <SmallBlogCard />
-          <SmallBlogCard />
-          <SmallBlogCard /> */}
         </div>
       )}
     </div>

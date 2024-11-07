@@ -9,11 +9,12 @@ import {
 } from 'react-icons/pi';
 import { formatDate } from '../../utils/formatDate';
 
-import { useDeleteBlog } from './useDeleteB,log.js';
-import { useUpdateBlog } from './usePublishBlog.js';
+import { useDeleteBlog } from './useDeleteBlog';
+import { useUpdateBlog } from './usePublishBlog';
 import { useBlogContext } from '../../contexts/writeContext';
-
-const PUBLIC_URL = `http://localhost:3000/blog`;
+import ConfirmDelete from '../../ui/ConfirmDelete';
+import Modal from '../../ui/Modal';
+import { PUBLIC_URL } from '../../constant';
 
 function BlogItem({ blog }) {
   const {
@@ -87,17 +88,19 @@ function BlogItem({ blog }) {
           <PiNotePencil className="text-xl" />
         </Button>
 
-        <Button
-          type="delete"
-          onClick={() => deleteBlog(id)}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <PiSpinner className="text-xl" />
-          ) : (
-            <PiTrash className="text-xl" />
-          )}
-        </Button>
+        <Modal>
+          <Modal.Open name="delete">
+            <Button type="delete">
+              <PiTrash className="text-xl" />
+            </Button>
+          </Modal.Open>
+          <Modal.Window windowName="delete">
+            <ConfirmDelete
+              onConfirm={() => deleteBlog(id)}
+              disabled={isLoading}
+            />
+          </Modal.Window>
+        </Modal>
       </div>
     </div>
   );

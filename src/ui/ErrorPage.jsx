@@ -4,7 +4,7 @@ function ErrorPage() {
   const navogate = useNavigate();
   const error = useRouteError();
   return (
-    <div className="mx-auto mt-36 max-w-[500px]">
+    <div className="max-w-[500px mx-auto mt-36">
       <p className="text-center text-3xl text-orange-500">
         Something went worng :/
       </p>

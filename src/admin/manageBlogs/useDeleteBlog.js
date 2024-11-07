@@ -11,8 +11,8 @@ export function useDeleteBlog() {
       queryClient.invalidateQueries({ queryKey: ['publishBlogs'] });
       toast.success('Blog successfully deleted');
     },
-    onError: () => {
-      toast.error(`Blog could not Deleted`);
+    onError: (err) => {
+      toast.error(err.message || `Blog could not Deleted`);
     },
   });
 

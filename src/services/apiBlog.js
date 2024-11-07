@@ -32,6 +32,7 @@ export async function createBlog(newBlog) {
     const res = await fetch(`${BASE_URL}`, {
       method: 'POST',
       body: newBlog,
+      credentials: 'include',
     });
 
     const data = await res.json();
@@ -48,6 +49,7 @@ export async function updateBlog(id, blogData) {
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: 'PATCH',
       body: blogData,
+      credentials: 'include',
     });
 
     const data = await res.json();
@@ -66,6 +68,7 @@ export async function updatePublishing(id, publishData) {
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(publishData),
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -86,10 +89,12 @@ export async function deleteBlog(id) {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: 'DELETE',
+      credentials: 'include',
     });
 
     const data = await res.json();
-    if (!data.ok) throw new Error('Somthing went wrong in deleting Blog!');
+    console.log(data);
+    if (!data.ok) throw new Error(data.message);
 
     return null;
   } catch (err) {

@@ -1,9 +1,10 @@
-import { useLoaderData } from 'react-router-dom';
 import BlogsTable from '../admin/manageBlogs/BlogsTable';
+import DashBorardNav from './DashBorardNav';
 
 function DashBoard() {
   return (
     <div className="mt-12">
+      <DashBorardNav />
       <div>
         <p className="font-header text-2xl font-semibold">
           Devhorizon Public Blogs

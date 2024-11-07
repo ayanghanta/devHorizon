@@ -69,7 +69,7 @@ function BlogPreview() {
           {...register('title', {
             required: 'Title must be required for the blog',
           })}
-          rows={2} // This defines how many lines of text will be visible initially
+          rows={2}
         />
         <textarea
           className="mb-3 block h-auto w-full resize-none rounded-sm bg-gray-100 px-2 py-2 text-sm italic text-gray-900 outline-none"
@@ -91,6 +91,7 @@ function BlogPreview() {
               </Button>
             </>
           )}
+
           {writingMode === 'update' && (
             <>
               <Button type="secondary">Cancel</Button>

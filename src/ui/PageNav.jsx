@@ -16,10 +16,13 @@ function PageNav({ type = 'appLayout' }) {
           </li>
         </ul>
       )}
-      <Link to="/admin/dashboard">dashBoard</Link>
-      <Link to="/write">
-        <Button type="create">&#43; Create</Button>
-      </Link>
+      <Link to="/admin/dashboard">DashBoard</Link>
+      <div className="space-x-3">
+        <Link to="/login">
+          <Button type="primary">Login</Button>
+        </Link>
+      </div>
+      {/* <div></div> */}
     </nav>
   );
 }

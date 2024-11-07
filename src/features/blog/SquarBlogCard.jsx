@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { formatDate } from '../../utils/formatDate';
 import CollapsText from '../../utils/CollapsText';
-
-const PUBLIC_URL = `http://localhost:3000/blog`;
+import { PUBLIC_URL } from '../../constant';
 
 function SquarBlogCard({ blog = {} }) {
   const { title, description, blogCoverImage, publishedAt, _id: id } = blog;

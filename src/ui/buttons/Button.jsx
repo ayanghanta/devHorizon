@@ -6,7 +6,7 @@ function Button({
   disabled = false,
 }) {
   const base =
-    'rounded-lg px-2 py-1 text-sm sm:px-4 sm:py-2 text-lg disabled:cursor-not-allowed  ';
+    'rounded-md px-2 py-1 text-sm sm:px-4 sm:py-2 text-lg disabled:cursor-not-allowed  ';
   const editbase =
     'text-sm text-white sm:text-base transition duration-300 px-1.5 py-1 rounded-sm disabled:cursor-not-allowed ';
   const style = {
@@ -25,6 +25,7 @@ function Button({
     edit: editbase + 'bg-amber-500 hover:bg-amber-700',
     publish: editbase + 'bg-green-500 hover:bg-green-700',
     hide: editbase + 'bg-indigo-500 hover:bg-indigo-700',
+    cancel: editbase + 'bg-gray-300 hover:bg-gray-400',
   };
 
   if (onClick)

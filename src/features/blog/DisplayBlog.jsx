@@ -4,17 +4,22 @@ import BlogContentDesplay from './BlogContentDesplay';
 import BlogInfo from './BlogInfo';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../../ui/Spinner';
-
-const PUBLIC_URL = `http://localhost:3000/blog`;
+import { PUBLIC_URL } from '../../constant';
 
 function DisplayBlog() {
   const { blogId } = useParams();
-  const { data: blog, isLoading } = useQuery({
-    queryKey: ['blog'],
+  const {
+    data: blog,
+    isLoading,
+    status,
+  } = useQuery({
+    queryKey: ['blog', blogId],
     queryFn: () => getBlog(blogId),
   });
 
   if (isLoading) return <Spinner />;
+
+  if (status === 'error') throw new Error('This Blog Does not Exist');
 
   const {
     title,
@@ -26,7 +31,7 @@ function DisplayBlog() {
   } = blog;
 
   return (
-    <div className="mx-auto mt-20 max-w-4xl">
+    <div className="mx-auto mt-20 max-w-4xl pb-24">
       <h1 className="mb-10 mt-3 font-header text-5xl font-semibold text-gray-700">
         {title}
       </h1>
