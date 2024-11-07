@@ -1,5 +1,24 @@
 const BASE_URL = `http://localhost:3000/api/v1/users`;
 
+export async function singup({ name, email, password, confirmPassword }) {
+  try {
+    const res = await fetch(`${BASE_URL}/singup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({ name, email, password, confirmPassword }),
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.message);
+
+    return data.data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
 export async function login({ email, password }) {
   try {
     const res = await fetch(`${BASE_URL}/login`, {
