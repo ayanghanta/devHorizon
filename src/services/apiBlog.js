@@ -1,4 +1,5 @@
-const BASE_URL = `http://localhost:3000/api/v1/blogs`;
+// const BASE_URL = `http://localhost:3000/api/v1/blogs`;
+const BASE_URL = `https://devio-rail.up.railway.app/api/v1/blogs`;
 
 export async function getPublishedBlogs(aliasUrl = '') {
   let reqUrl = BASE_URL;

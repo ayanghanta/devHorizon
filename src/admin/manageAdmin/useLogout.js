@@ -10,8 +10,8 @@ export function useLogout() {
   const { mutate: logout, isLoading } = useMutation({
     mutationFn: logoutApi,
     onSuccess: () => {
-      queryClinet.invalidateQueries();
       navigate('/', { replace: true });
+      queryClinet.invalidateQueries();
     },
     onError: () => {
       toast.error('can not logged out !');
