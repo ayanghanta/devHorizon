@@ -6,8 +6,8 @@ import { useLogin } from '../admin/manageAdmin/useLogin';
 import ButtonLoader from './ButtonLoader';
 
 function Login() {
-  const [email, setEmail] = useState('test7@gmail.com');
-  const [password, setPassword] = useState('test123456789');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
