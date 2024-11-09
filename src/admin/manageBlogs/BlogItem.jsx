@@ -15,14 +15,13 @@ import { useBlogContext } from '../../contexts/writeContext';
 import ConfirmDelete from '../../ui/ConfirmDelete';
 import Modal from '../../ui/Modal';
 import { PUBLIC_URL } from '../../constant';
+import { useGetBlogDash } from '../../features/blog/useGetBlogDash';
 
 function BlogItem({ blog }) {
   const {
     title: SavedBlogTitle,
     blogCoverImage,
-    description: savedBlogDecription,
     publishedAt,
-    content: savedBlogContent,
     _id: id,
     likes,
     isPublished,
@@ -30,19 +29,24 @@ function BlogItem({ blog }) {
   const { dispatch } = useBlogContext();
   const { isLoading, deleteBlog } = useDeleteBlog();
   const { isLoading: isPublishing, publish } = useUpdateBlog();
+  const { getBlog, isLoading: isGettingBlogInfo } = useGetBlogDash();
 
   const navigate = useNavigate();
 
   function handleEditBlog() {
-    // 1. update the blogWiring context
-    dispatch({ type: 'updateTitle', payload: SavedBlogTitle });
-    dispatch({ type: 'updateDescription', payload: savedBlogDecription });
-    dispatch({ type: 'updateContent', payload: savedBlogContent });
-    dispatch({ type: 'changeWritingMode', payload: 'update' });
-    dispatch({ type: 'setBlogId', payload: id });
+    getBlog(id, {
+      onSuccess: (data) => {
+        // 1. update the blogWiring context
+        dispatch({ type: 'updateTitle', payload: data.title });
+        dispatch({ type: 'updateDescription', payload: data.description });
+        dispatch({ type: 'updateContent', payload: data.content });
+        dispatch({ type: 'changeWritingMode', payload: 'update' });
+        dispatch({ type: 'setBlogId', payload: id });
 
-    //2. naigate the the writing page with daya dispayed
-    navigate(`/write`);
+        //2. naigate the the writing page with daya dispayed
+        navigate(`/admin/write`);
+      },
+    });
   }
 
   return (
@@ -85,7 +89,11 @@ function BlogItem({ blog }) {
         )}
 
         <Button type="edit" onClick={handleEditBlog}>
-          <PiNotePencil className="text-xl" />
+          {isGettingBlogInfo ? (
+            <PiSpinner className="text-xl" />
+          ) : (
+            <PiNotePencil className="text-xl" />
+          )}
         </Button>
 
         <Modal>

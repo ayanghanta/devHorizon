@@ -19,6 +19,7 @@ function BlogPreview() {
   const { register, handleSubmit } = useForm({
     defaultValues: { title, description },
   });
+
   const { isLoading: isCreating, createBlog } = useCreateBlog();
   const { isLoading: isUpdating, updateBlog } = useUpdateBlog();
   const navigate = useNavigate();

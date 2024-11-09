@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+  /* Style for active page */
+
+  /* style for code block */
   pre {
     margin-top: 12px;
     margin-bottom: 12px;

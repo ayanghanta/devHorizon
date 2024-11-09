@@ -13,8 +13,8 @@ export function useUpdateBlog() {
         `Blog successfully ${blog.isPublished ? 'published' : 'Hide and save'} `,
       );
     },
-    onError: () => {
-      toast.error(`Blog could not be published/hiding`);
+    onError: (err) => {
+      toast.error(err.message);
     },
   });
 

@@ -8,8 +8,9 @@ export function useUpdateBlog() {
     onSuccess: () => {
       toast.success('Blog successfully updated');
     },
-    onError: () => {
-      toast.error(`Blog could not be updated`);
+    onError: (err) => {
+      console.log(err);
+      toast.error(err.message);
     },
   });
 

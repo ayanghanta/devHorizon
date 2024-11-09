@@ -3,32 +3,36 @@ export const modifyHtml = (html) => {
   return html
     .replace(
       /<h1>/g,
-      '<h1 className="text-4xl font-semibold mb-4 text-gray-800">',
+      '<h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-gray-800">',
     )
     .replace(
       /<h2>/g,
-      '<h2 className="text-4xl font-semibold mb-5 mt-12 text-gray-800 font-header">',
+      '<h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-5 mt-12 text-gray-800 font-header">',
     )
     .replace(
       /<h3>/g,
-      '<h3 className="text-3xl font-semibold mb-4 mt-8  text-gray-800 font-header">',
+      '<h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 mt-8  text-gray-800 font-header">',
     )
     .replace(
       /<h4>/g,
-      '<h4 className="text-2xl font-semibold my-4  text-gray-800 font-header">',
+      '<h4 className="text-lg sm:text-xl md:text-2xl font-semibold my-4  text-gray-800 font-header">',
     )
     .replace(
       /<h5>/g,
-      '<h5 className="text-xl font-semibold mb-2 mt-3  text-gray-800 font-header">',
+      '<h5 className="text-base sm:text-xl md:text-xl font-semibold mb-2 mt-3  text-gray-800 font-header">',
     )
     .replace(/<p>/g, '<p className="text-base">')
     .replace(/<ul>/g, '<ul className="list-disc mb-4 mt-3 ml-9">')
     .replace(/<ol>/g, '<ol className="list-decimal mb-2 mt-3 ml-8">')
     .replace(/<li>/g, '<li className="mb-1">')
     .replace(
+      /<strong>/g,
+      '<strong className="font-bold text-sm sm:text-base text-gray-800">',
+    )
+    .replace(
       /<blockquote>/g,
       '<blockquote className="border-l-4 px-4 py-2 my-4 italic text-gray-600 bg-gray-50">',
-    ) // Styling for blockquotes
+    )
     .replace(
       /<pre>/g,
       '<pre className="bg-gray-900 text-gray-100 p-4 rounded-sm overflow-x-auto my-4">',

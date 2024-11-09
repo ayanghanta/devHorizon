@@ -32,7 +32,7 @@ function DisplayBlog() {
 
   return (
     <div className="mx-auto mt-20 max-w-4xl pb-24">
-      <h1 className="mb-10 mt-3 font-header text-5xl font-semibold text-gray-700">
+      <h1 className="mb-10 mt-3 font-header text-3xl font-semibold text-gray-700 sm:text-4xl md:text-5xl">
         {title}
       </h1>
       <BlogInfo blogPublishDate={publishedAt} />
@@ -42,7 +42,9 @@ function DisplayBlog() {
         src={`${PUBLIC_URL}/${blogCoverImage}`}
         alt={`cover image of ${title}`}
       />
-      <p className="mb-12 italic text-gray-500">{description}</p>
+      <p className="mb-12 text-sm italic text-gray-500 sm:text-base">
+        {description}
+      </p>
       <BlogContentDesplay
         type="presenting"
         codeTheme={codeTheme}

@@ -54,7 +54,7 @@ export async function updateBlog(id, blogData) {
 
     const data = await res.json();
     console.log(data);
-    if (!data.ok) throw new Error('Somthing went wrong in updaing Blog!');
+    if (!data.ok) throw new Error(data.message);
 
     return data.data.blog;
   } catch (err) {
@@ -63,7 +63,7 @@ export async function updateBlog(id, blogData) {
 }
 
 export async function updatePublishing(id, publishData) {
-  console.log(JSON.stringify(publishData));
+  // console.log(JSON.stringify(publishData));
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: 'PATCH',
@@ -75,9 +75,9 @@ export async function updatePublishing(id, publishData) {
     });
 
     const data = await res.json();
-    console.log(data);
-    console.log(data);
-    if (!data.ok) throw new Error('Somthing went wrong in publishing/hiding');
+    // console.log(data);
+    // console.log(data);
+    if (!data.ok) throw new Error(data.message);
 
     return data.data.blog;
   } catch (err) {

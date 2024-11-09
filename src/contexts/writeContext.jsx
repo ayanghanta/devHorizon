@@ -45,6 +45,7 @@ function BlogProvider({ children }) {
     },
     dispatch,
   ] = useReducer(reducer, initialSate);
+
   return (
     <BlogContext.Provider
       value={{
