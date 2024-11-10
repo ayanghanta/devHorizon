@@ -5,9 +5,9 @@ function Footer() {
     <>
       <footer className="mt-16 border-t border-gray-200 bg-gray-800 px-3 pb-6 pt-12 text-center">
         <p className="text-sm text-gray-500">
-          &copy; {new Date().getFullYear()}{' '}
+          &copy; {new Date().getFullYear()}
           <Link to="/" className="font-semibold text-gray-300">
-            devHorizon
+            Devio
           </Link>
           — All rights reserved.
         </p>

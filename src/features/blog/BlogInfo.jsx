@@ -26,7 +26,7 @@ function BlogInfo({ readTime = 5, blogPublishDate }) {
             {readTime} min read | {formatDate(blogPublishDate)}
           </p>
         </div>
-        <div className="ml-auto mr-16 flex items-center gap-4">
+        <div className="ml-auto mr-2 flex items-center gap-2 sm:mr-12 sm:gap-4 md:mr-16">
           {like ? (
             <PiHeartFill
               className="cursor-pointer fill-rose-500 p-1.5 text-3xl text-gray-500 sm:text-4xl"
