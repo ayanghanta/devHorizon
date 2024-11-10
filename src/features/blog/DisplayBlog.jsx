@@ -31,7 +31,7 @@ function DisplayBlog() {
   } = blog;
 
   return (
-    <div className="mx-auto mt-20 max-w-4xl pb-24">
+    <div className="mx-auto mt-20 max-w-80 pb-24 sm:max-w-xl md:max-w-2xl lg:max-w-4xl">
       <h1 className="mb-10 mt-3 font-header text-3xl font-semibold text-gray-700 sm:text-4xl md:text-5xl">
         {title}
       </h1>
