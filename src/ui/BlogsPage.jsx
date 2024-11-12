@@ -19,9 +19,6 @@ function BlogsPage() {
     queryFn: () => getPublishedBlogs(),
   });
 
-  if (isLoadLatestBlog) return <p>Loading...</p>;
-  if (isLoadingLikedBlogs) return <p>Loading...</p>;
-
   return (
     <div className="mx-auto mt-16 max-w-4xl">
       <div className="letestBlogContainer">
