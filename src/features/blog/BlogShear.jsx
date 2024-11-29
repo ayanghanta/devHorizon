@@ -41,7 +41,7 @@ function BlogShear() {
 
       {modalOpen && (
         <div
-          className="absolute right-0 w-96 rounded-sm bg-white shadow-lg"
+          className="absolute right-0 w-80 rounded-sm bg-white shadow-lg md:w-96"
           ref={modal}
         >
           <div className="flex items-start justify-end gap-3 rounded-t-sm bg-gray-100 px-4 py-2 text-gray-500">
