@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { PiShareFatDuotone, PiHeart, PiHeartFill } from 'react-icons/pi';
+import { PiHeart, PiHeartFill } from 'react-icons/pi';
 import { useState } from 'react';
 import { formatDate } from '../../utils/formatDate';
+import BlogShear from './BlogShear';
 
 function BlogInfo({ readTime = 5, blogPublishDate }) {
   const [like, setLike] = useState(false);
@@ -38,7 +39,7 @@ function BlogInfo({ readTime = 5, blogPublishDate }) {
               onClick={handleLike}
             />
           )}
-          <PiShareFatDuotone className="cursor-pointer text-xl text-gray-400 sm:text-2xl" />
+          <BlogShear />
         </div>
       </div>
     </div>

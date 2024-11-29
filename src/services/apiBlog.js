@@ -94,7 +94,7 @@ export async function deleteBlog(id) {
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (!data.ok) throw new Error(data.message);
 
     return null;

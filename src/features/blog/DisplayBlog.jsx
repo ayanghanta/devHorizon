@@ -28,10 +28,7 @@ function DisplayBlog() {
     publishedAt,
     codeTheme,
     codeLanguage,
-    slug,
   } = blog;
-
-  console.log(slug);
 
   return (
     <div className="mx-auto mt-20 max-w-80 pb-24 sm:max-w-xl md:max-w-2xl lg:max-w-4xl">
